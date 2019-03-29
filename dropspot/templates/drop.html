@@ -1,5 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-Drop here
+<form action="/drop" method="post">
+  <fieldset>
+    <legend>Dropper</legend>
+    <label>Choose yous files:</label>
+    <br/>
+    <input type="file" name="files" multiple/>
+    <br/>
+    <br/>
+    <label>Put your authentication code here:</label>
+    <br/>
+    <input type="text" name="authcode" pattern="\d{6}"/>
+    <br/>
+    <button type="submit">Drop me!</button>
+  </fieldset>
+</form>
 {% endblock %}
+
