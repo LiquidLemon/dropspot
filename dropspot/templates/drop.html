@@ -1,20 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="card text-center">
 <form action="/drop" method="post" enctype="multipart/form-data">
-  <fieldset>
-    <legend>Dropper</legend>
-    <label>Choose your files:</label>
-    <br/>
-    <input type="file" name="files" multiple/>
-    <br/>
-    <br/>
-    <label>Put your authentication code here:</label>
-    <br/>
-    <input type="text" name="authcode" pattern="\d{6}"/>
-    <br/>
-    <button type="submit">Drop me!</button>
-  </fieldset>
+  <div class="card-header">
+    <h4 class="card-title">Dropper</h4>
+  </div>
+    <div class="card-body">
+      <div class="form-row">
+        <div class="form-group col">
+          <label>Choose your files</label>
+          <input class="btn btn-default" type="file" name="files" multiple/>
+        </div>
+	  </div>
+      <div class="form-row">
+        <div class="form-group col">
+          <label>Authentication code</label>
+          <input class="form-control" type="text" name="authcode" pattern="\d{6}"/>
+          <small class="form-text text-muted">Enter your code from Google Authenticator app</small>
+        </div>
+      </div>
+    <button class="btn btn-primary" type="submit">Drop me!</button>
+  </div>
 </form>
+</div>
 {% endblock %}
 
