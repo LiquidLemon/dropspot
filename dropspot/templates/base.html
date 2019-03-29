@@ -6,6 +6,9 @@
 </head>
 <body>
   <h1>BASE</h1>
+  {% for msg in get_flashed_messages() %}
+  <p>{{ msg }}</p>
+  {% endfor %}
   {% block content %}{% endblock %}
 </body>
 </html>
