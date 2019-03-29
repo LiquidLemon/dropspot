@@ -18,7 +18,12 @@
     <div class="row">
       <div class="col">
 	    {% for cat, msg in get_flashed_messages(with_categories=true) %}
-        <p class="{{ cat }}">{{ msg }}</p>
+		{% if cat == 'error' %}
+		{% set class = 'alert alert-danger' %}
+		{% else %}
+		{% set class = 'alert alert-success' %}
+		{% endif %}
+        <div class="{{ class }}">{{ msg }}</div>
         {% endfor %}
       </div>
 	</div>
