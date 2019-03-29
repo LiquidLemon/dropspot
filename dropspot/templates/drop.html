@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form action="/drop" method="post">
+<form action="/drop" method="post" enctype="multipart/form-data">
   <fieldset>
     <legend>Dropper</legend>
-    <label>Choose yous files:</label>
+    <label>Choose your files:</label>
     <br/>
     <input type="file" name="files" multiple/>
     <br/>

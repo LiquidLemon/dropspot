@@ -7,7 +7,6 @@ def create_app():
     app.config.from_pyfile("../config.py", silent=True)
     app.register_blueprint(auth.bp)
     app.register_blueprint(drop.bp)
-    app.add_url_rule("/", endpoint="drop")
     return app
 
 
