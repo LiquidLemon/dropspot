@@ -13,6 +13,7 @@ black = "*"
 
 [packages]
 flask = "*"
+pyotp = "*"
 
 [requires]
 python_version = "3.7"
