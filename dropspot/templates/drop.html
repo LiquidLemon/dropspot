@@ -3,32 +3,32 @@
 {% block content %}
 <script src="{{ url_for('static', filename='updateFileLabel.js') }}"></script>
 <div class="card text-center">
-  <form action="/drop" method="post" enctype="multipart/form-data">
-    <div class="card-header">
-      <h4 class="card-title">Dropper</h4>
-    </div>
-      <div class="card-body">
-        <div class="form-row">
-          <div class="form-group col">
-            <label>Your important files</label>
-            <div class="input-group">
-              <div class="custom-file">
-                <input class="custom-file-input" type="file" name="files" id="files" onChange="updateFileLabel(this.files)" multiple/>
-                <label class="custom-file-label" for="files" id="files-label">Choose file</label>
-              </div>
+  <div class="card-header">
+    <h4 class="card-title">Dropper</h4>
+  </div>
+  <div class="card-body">
+    <form action="/drop" method="post" enctype="multipart/form-data">
+      <div class="form-row">
+        <div class="form-group col">
+          <label>Your important files</label>
+          <div class="input-group">
+            <div class="custom-file">
+              <input class="custom-file-input" type="file" name="files" id="files" onChange="updateFileLabel(this.files)" multiple/>
+              <label class="custom-file-label" for="files" id="files-label">Choose file</label>
             </div>
           </div>
-  	  </div>
-        <div class="form-row">
-          <div class="form-group col">
-            <label>Authentication code</label>
-            <input class="form-control" type="text" name="authcode" pattern="\d{6}"/>
-            <small class="form-text text-muted">Enter your code from Google Authenticator app</small>
-          </div>
         </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col">
+          <label>Authentication code</label>
+          <input class="form-control" type="text" name="authcode" pattern="\d{6}"/>
+          <small class="form-text text-muted">Enter your code from Google Authenticator app</small>
+        </div>
+      </div>
       <button class="btn btn-primary btn-block" type="submit">Drop me!</button>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>
 {% endblock %}
 
