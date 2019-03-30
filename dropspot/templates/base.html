@@ -22,8 +22,6 @@
         </li>
       </ul>
     </nav>
-    <br/>
-    <br/>
     <div class="row">
       <div class="col">
 	    {% for cat, msg in get_flashed_messages(with_categories=true) %}
@@ -36,6 +34,8 @@
         {% endfor %}
       </div>
 	</div>
+    <br/>
+    <br/>
 	<div class="row justify-content-center">
 	<div class="col-lg-4">
     {% block content %}{% endblock %}
