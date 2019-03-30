@@ -16,19 +16,20 @@ Drop
     <form action="/drop" method="post" enctype="multipart/form-data">
       <div class="form-row">
         <div class="form-group col">
-          <label>Your important files</label>
+          <label>Files</label>
           <div class="input-group">
             <div class="custom-file">
               <input class="custom-file-input" type="file" name="files" id="files" onChange="updateFileLabel(this.files)" multiple/>
               <label class="custom-file-label" for="files" id="files-label">Choose file</label>
             </div>
           </div>
+          <small class="form-text text-muted">Put your very important files here</small>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col">
           <label>Authentication code</label>
-          <input class="form-control" type="text" name="authcode" pattern="\d{6}"/>
+          <input class="form-control" type="text" name="authcode" pattern="\d{6}" placeholder="Code"/>
           <small class="form-text text-muted">Enter your code from Google Authenticator app</small>
         </div>
       </div>
