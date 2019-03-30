@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 
+{% set page = 'drop' %}
+
+{% block title %}
+Drop
+{% endblock %}
+
 {% block content %}
 <script src="{{ url_for('static', filename='updateFileLabel.js') }}"></script>
 <div class="card text-center">
