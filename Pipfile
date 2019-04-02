@@ -14,6 +14,7 @@ black = "*"
 [packages]
 flask = "*"
 pyotp = "*"
+flask-sqlalchemy = "*"
 
 [requires]
 python_version = "3.7"

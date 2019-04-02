@@ -1,3 +1,5 @@
 UPLOAD_DIR = 'files'
 SECRET_KEY = 'dev'
 TOTP_SECRET = 'dupa'
+SQLALCHEMY_DATABASE_URI = 'sqlite:///../database.db'
+SQLALCHEMY_TRACK_MODIFICATIONS = False
