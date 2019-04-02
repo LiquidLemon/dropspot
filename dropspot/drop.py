@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, redirect
+from flask import Blueprint, render_template, request, flash, redirect, session
 from flask import current_app as app
 from pyotp import TOTP
 import os
@@ -34,4 +34,4 @@ def index():
         flash("Files uploaded correctly!", "success")
         return redirect("/drop")
 
-    return render_template("drop.html")
+    return render_template("drop.html", user=session.get('user_email'))

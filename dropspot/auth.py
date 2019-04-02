@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template, flash, redirect
+from flask import Blueprint, request, render_template, flash, redirect, session
 from werkzeug.security import check_password_hash, generate_password_hash
 from dropspot.models import db, User
 
@@ -7,6 +7,10 @@ bp = Blueprint("auth", __name__)
 
 @bp.route("/register", methods=["GET", "POST"])
 def register():
+    if session.get("user_id") is not None:
+        flash("Already logged in", "success")
+        return redirect("/drop")
+
     if request.method == "POST":
         password = request.form["password"]
         c_password = request.form["confirm-password"]
@@ -49,6 +53,10 @@ def register():
 
 @bp.route("/login", methods=["GET", "POST"])
 def login():
+    if session.get("user_id") is not None:
+        flash("Already logged in", "success")
+        return redirect("/drop")
+
     if request.method == "POST":
         password = request.form["password"]
         email = request.form["email"]
@@ -71,7 +79,18 @@ def login():
             flash("Incorrect password", "error")
             return redirect(request.url)
 
-        flash("Logged in successfully")
+        session.clear()
+        session["user_id"] = user.id
+        session["user_email"] = user.email
+
+        flash("Logged in successfully", "success")
         return redirect("/drop")
 
     return render_template("login.html")
+
+
+@bp.route("/logout")
+def logout():
+    session.clear()
+    flash("Logged out successfully", "success")
+    return redirect("/drop")
