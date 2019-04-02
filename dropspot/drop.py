@@ -53,4 +53,4 @@ def index():
         flash("Files uploaded correctly!", "success")
         return redirect("/drop")
 
-    return render_template("drop.html", user_email=session.get('user_email'))
+    return render_template("drop.html", user_email=session.get("user_email"))

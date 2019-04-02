@@ -50,10 +50,12 @@ def register():
             flash("User with this username is registered already", "error")
             return redirect(request.url)
 
-        user = User(email=email, 
-                    username=username,
-                    password_hash=generate_password_hash(password),
-                    otp_secret=pyotp.random_base32())
+        user = User(
+            email=email,
+            username=username,
+            password_hash=generate_password_hash(password),
+            otp_secret=pyotp.random_base32(),
+        )
 
         db.session.add(user)
         db.session.commit()
