@@ -1,6 +1,7 @@
 from flask import Blueprint, request, render_template, flash, redirect, session
 from werkzeug.security import check_password_hash, generate_password_hash
 from dropspot.models import db, User
+import pyotp
 
 bp = Blueprint("auth", __name__)
 
@@ -15,9 +16,14 @@ def register():
         password = request.form["password"]
         c_password = request.form["confirm-password"]
         email = request.form["email"]
+        username = request.form["username"]
 
         if email == "":
             flash("Missing email", "error")
+            return redirect(request.url)
+
+        if username == "":
+            flash("Missing username", "error")
             return redirect(request.url)
 
         if password == "":
@@ -40,7 +46,14 @@ def register():
             flash("User with this email is registered already", "error")
             return redirect(request.url)
 
-        user = User(email=email, password_hash=generate_password_hash(password))
+        if User.query.filter_by(username=username).first() is not None:
+            flash("User with this username is registered already", "error")
+            return redirect(request.url)
+
+        user = User(email=email, 
+                    username=username,
+                    password_hash=generate_password_hash(password),
+                    otp_secret=pyotp.random_base32())
 
         db.session.add(user)
         db.session.commit()

@@ -5,33 +5,44 @@
 {% block title %} Register {% endblock %}
 
 {% block content %}
-<div class="card text-center">
-  <div class="card-header">
-    <h4 class="card-title">Register</h4>
-  </div>
-  <div class="card-body">
-    <form action="/register" method="post">
-      <div class="form-row">
-        <div class="form-group col">
-          <label>Email address</label>
-          <input class="form-control" type="email" name="email" placeholder="Email" />
-          <small class="form-text text-muted">Enter your Email</small>
-        </div>
+<div class="row justify-content-center">
+  <div class="col-lg-4">
+    <div class="card text-center">
+      <div class="card-header">
+        <h4 class="card-title">Register</h4>
       </div>
-      <div class="form-row">
-        <div class="form-group col">
-          <label>Password</label>
-          <input class="form-control" type="password" name="password" placeholder="Password" />
-          <small class="form-text text-muted">Enter your password</small>
-        </div>
-        <div class="form-group col">
-          <label>Confirm</label>
-          <input class="form-control" type="password" name="confirm-password" placeholder="Confirm" />
-          <small class="form-text text-muted">Confirm your password, do not copy paste it!</small>
-        </div>
+      <div class="card-body">
+        <form action="/register" method="post">
+          <div class="form-row">
+            <div class="form-group col">
+              <label>Email address</label>
+              <input class="form-control" type="email" name="email" placeholder="Email" />
+              <small class="form-text text-muted">Enter your Email</small>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col">
+              <label>Username</label>
+              <input class="form-control" type="text" name="username" placeholder="Username" />
+              <small class="form-text text-muted">Enter your username</small>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col">
+              <label>Password</label>
+              <input class="form-control" type="password" name="password" placeholder="Password" />
+              <small class="form-text text-muted">Enter your password</small>
+            </div>
+            <div class="form-group col">
+              <label>Confirm</label>
+              <input class="form-control" type="password" name="confirm-password" placeholder="Confirm" />
+              <small class="form-text text-muted">Confirm your password, do not copy paste it!</small>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-block" type="submit">Register!</button>
+        </form>
       </div>
-      <button class="btn btn-primary btn-block" type="submit">Register!</button>
-    </form>
+    </div>
   </div>
 </div>
 {% endblock %}

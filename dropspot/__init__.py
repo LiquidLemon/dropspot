@@ -1,7 +1,7 @@
 from pathlib import Path
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from dropspot import auth, drop
+from dropspot import auth, drop, profile
 
 
 def create_app():
@@ -9,6 +9,7 @@ def create_app():
     app.config.from_pyfile("../config.py", silent=True)
     app.register_blueprint(auth.bp)
     app.register_blueprint(drop.bp)
+    app.register_blueprint(profile.bp)
 
     from dropspot.models import db
 
