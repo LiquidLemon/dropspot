@@ -5,12 +5,13 @@ import os
 
 bp = Blueprint("drop", __name__)
 
+
 @bp.route("/drop", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
         totp = TOTP(app.config["TOTP_SECRET"])
         if request.form["authcode"] == "":
-            flash("Missing OTP", 'error')
+            flash("Missing OTP", "error")
             return redirect(request.url)
 
         if not totp.verify(request.form["authcode"]):
@@ -34,5 +35,3 @@ def index():
         return redirect("/drop")
 
     return render_template("drop.html")
-
-

@@ -11,12 +11,12 @@ def create_app():
     app.register_blueprint(drop.bp)
 
     from dropspot.models import db
+
     db.init_app(app)
     database = Path("./database.db")
     if not database.is_file():
-        print('no database detected, creating one')
+        print("no database detected, creating one")
         with app.app_context():
             db.create_all()
 
     return app
-
