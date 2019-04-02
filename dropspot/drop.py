@@ -9,7 +9,7 @@ bp = Blueprint("drop", __name__)
 def index():
     if request.method == "POST":
         totp = TOTP(app.config["TOTP_SECRET"])
-        if "authcode" not in request.form:
+        if request.form["authcode"] == "":
             flash("Missing OTP", 'error')
             return redirect(request.url)
 
