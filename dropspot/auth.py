@@ -15,12 +15,7 @@ def register():
     if request.method == "POST":
         password = request.form["password"]
         c_password = request.form["confirm-password"]
-        email = request.form["email"]
         username = request.form["username"]
-
-        if email == "":
-            flash("Missing email", "error")
-            return redirect(request.url)
 
         if username == "":
             flash("Missing username", "error")
@@ -42,16 +37,11 @@ def register():
             flash("Password must be at least 8 characters long", "error")
             return redirect(request.url)
 
-        if User.query.filter_by(email=email).first() is not None:
-            flash("User with this email is registered already", "error")
-            return redirect(request.url)
-
         if User.query.filter_by(username=username).first() is not None:
             flash("User with this username is registered already", "error")
             return redirect(request.url)
 
         user = User(
-            email=email,
             username=username,
             password_hash=generate_password_hash(password),
             otp_secret=pyotp.random_base32(),
@@ -74,20 +64,20 @@ def login():
 
     if request.method == "POST":
         password = request.form["password"]
-        email = request.form["email"]
+        username = request.form["username"]
 
-        if email == "":
-            flash("Missing email", "error")
+        if username == "":
+            flash("Missing username", "error")
             return redirect(request.url)
 
         if password == "":
             flash("Missing password", "error")
             return redirect(request.url)
 
-        user = User.query.filter_by(email=email).first()
+        user = User.query.filter_by(username=username).first()
 
         if user is None:
-            flash("User with this email is does not exist", "error")
+            flash("User with this username does not exist", "error")
             return redirect(request.url)
 
         if not check_password_hash(user.password_hash, password):
@@ -96,7 +86,7 @@ def login():
 
         session.clear()
         session["user_id"] = user.id
-        session["user_email"] = user.email
+        session["username"] = user.username
 
         flash("Logged in successfully", "success")
         return redirect("/drop")

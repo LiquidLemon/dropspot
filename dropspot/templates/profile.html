@@ -16,14 +16,6 @@ Profile
       <div class="card-body">
         <div class="row">
           <div class="col-4">
-            Email
-          </div>
-          <div class="col">
-            {{ user_email }}
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-4">
             Username
           </div>
           <div class="col">
@@ -37,7 +29,7 @@ Profile
           <div class="col">
             <div id="qr-placeholder"></div>
             <noscript id="noscript-qr-url">
-              {{ otp_uri }}
+              {{ otp_uri|safe }}
             </noscript>
           </div>
         </div>

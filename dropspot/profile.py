@@ -23,7 +23,7 @@ def profile():
 
     return render_template(
         "profile.html",
-        user_email=session.get("user_email"),
+        username=session.get("username"),
         otp_uri=otp_uri,
         user=user,
     )
