@@ -6,6 +6,7 @@ verify_ssl = true
 [scripts]
 serve = "python -m dropspot"
 fmt = "black -l 80 -t py37 dropspot"
+db = "python manage.py db"
 
 [dev-packages]
 mypy = "*"
@@ -15,10 +16,11 @@ black = "*"
 flask = "*"
 pyotp = "*"
 flask-sqlalchemy = "*"
+flask-migrate = "*"
+flask-script = "*"
 
 [requires]
 python_version = "3.7"
 
 [pipenv]
 allow_prereleases = true
-
